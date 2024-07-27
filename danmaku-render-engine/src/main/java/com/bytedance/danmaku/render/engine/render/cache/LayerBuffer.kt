@@ -72,7 +72,7 @@ class LayerBuffer(private val mConfig: DanmakuConfig,
             }
         }
         while (mBufferItems.size > mBufferSize) {
-            val item = mBufferItems.minByOrNull {
+            val item = mBufferItems.minBy {
                 @Suppress("UNCHECKED_CAST")
                 mConfig.common.bufferDiscardRule.invoke(it.data) as Comparable<Any?>
             }

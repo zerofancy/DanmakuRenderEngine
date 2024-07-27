@@ -43,7 +43,7 @@ class ScrollLayer : IRenderLayer, ITouchDelegate, ConfigChangeListener {
     private lateinit var mCachePool: IDrawCachePool
     private lateinit var mBuffer: LayerBuffer
     private lateinit var mConfig: DanmakuConfig
-    private val mLines = LinkedList<BubbleLine>()
+    private val mLines = LinkedList<ScrollLine>()
     private val mPreDrawItems = LinkedList<DrawItem<DanmakuData>>()
     private var mTotalDanmakuCountInLayer = 0
     private var mWidth = 0
@@ -163,7 +163,7 @@ class ScrollLayer : IRenderLayer, ITouchDelegate, ConfigChangeListener {
         val marginTop = mConfig.scroll.marginTop
         if (lineCount > mLines.size) {
             for (i in 1..(lineCount - mLines.size)) {
-                mLines.add(BubbleLine(mController, this).apply {
+                mLines.add(ScrollLine(mController, this).apply {
                     mController.registerCmdMonitor(this)
                 })
             }
